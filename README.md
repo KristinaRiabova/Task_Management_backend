@@ -1,82 +1,95 @@
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Manager Backend</title>
-</head>
-<body>
-    <h1>Task Manager Backend</h1>
-    <p>Цей проект є бекендом для менеджера завдань, створеним за допомогою NestJS та TypeORM, що працює з PostgreSQL.</p>
+# Task Manager Backend
 
-    <h2>Вимоги</h2>
-    <ul>
-        <li><a href="https://nodejs.org/">Node.js</a> (версія 16 або вище)</li>
-        <li><a href="https://www.postgresql.org/">PostgreSQL</a> (версія 12 або вище)</li>
-    </ul>
+Цей проект є бекендом для менеджера завдань, створеним за допомогою **NestJS** та **TypeORM**, що працює з **PostgreSQL**.
 
-    <h2>Кроки для запуску</h2>
+## Вимоги
 
-    <h3>1. Клонування репозиторію</h3>
-    <p>Склонуйте репозиторій на свій комп'ютер:</p>
-    <pre><code>git clone &lt;URL_вашого_репозиторію&gt;
+- [Node.js](https://nodejs.org/) (версія 16 або вище)
+- [PostgreSQL](https://www.postgresql.org/) (версія 12 або вище)
+
+## Кроки для запуску
+
+### 1. Клонування репозиторію
+
+Склонуйте репозиторій на свій комп'ютер:
+
+
+git clone <URL_вашого_репозиторію>
 cd task-manager-backend
-</code></pre>
 
-    <h3>2. Встановлення залежностей</h3>
-    <p>Встановіть всі необхідні залежності:</p>
-    <pre><code>npm install</code></pre>
-    <p>Або за допомогою Yarn:</p>
-    <pre><code>yarn install</code></pre>
 
-    <h3>3. Налаштування бази даних</h3>
-    <ol>
-        <li>Запустіть сервер PostgreSQL.</li>
-        <li>Створіть нову базу даних:</li>
-        <pre><code>CREATE DATABASE task_manager;</code></pre>
-        <li>Переконайтеся, що користувач <code>admin</code> має права доступу до бази даних з паролем <code>123</code>. Змініть ці дані у файлі <code>app.module.ts</code>, якщо це необхідно.</li>
-    </ol>
+### 2.  Встановлення залежностей
 
-    <h3>4. Запуск проекту</h3>
-    <p>Запустіть проект у режимі розробки:</p>
-    <pre><code>npm run start:dev</code></pre>
-    <p>Або за допомогою Yarn:</p>
-    <pre><code>yarn start:dev</code></pre>
-    <p>Сервер буде доступний за адресою <code>http://localhost:3001</code>.</p>
+npm install
 
-    <h3>5. Використання API</h3>
-    <p>Ви можете використовувати API для управління завданнями:</p>
-    <ul>
-        <li><strong>GET /tasks</strong> - Отримати всі завдання</li>
-        <li><strong>POST /tasks</strong> - Створити нове завдання</li>
-        <li><strong>DELETE /tasks/:id</strong> - Видалити завдання за ID</li>
-        <li><strong>PUT /tasks/:id</strong> - Оновити завдання за ID</li>
-        <li><strong>GET /tasks/search?query=текст</strong> - Пошук завдань за назвою або описом</li>
-    </ul>
 
-    <h4>Приклад запиту на створення завдання</h4>
-    <p>Використовуйте Postman або інший інструмент для тестування API, щоб надіслати POST-запит:</p>
-    <p><strong>URL:</strong> <code>http://localhost:3001/tasks</code><br>
-       <strong>Метод:</strong> <code>POST</code><br>
-       <strong>Тіло запиту:</strong></p>
-    <pre><code>{
-  "title": "Завдання 1",
-  "description": "Опис завдання 1",
-  "isCompleted": false
-}</code></pre>
+### 3. Налаштування бази даних
 
-    <h2>Тестування</h2>
-    <p>Для запуску тестів у проекті використовуйте:</p>
-    <pre><code>npm run test</code></pre>
-    <p>Або за допомогою Yarn:</p>
-    <pre><code>yarn test</code></pre>
+1. Запустіть сервер PostgreSQL.
 
-    <h2>Форматування коду</h2>
-    <p>Для форматування коду використовуйте команду:</p>
-    <pre><code>npm run format</code></pre>
-    <p>Або за допомогою Yarn:</p>
-    <pre><code>yarn format</code></pre>
+2. Створіть нову базу даних: CREATE DATABASE task_manager;
 
-   
-</body>
-</html>
+### 3. Налаштування бази даних
+
+1. **Запустіть сервер PostgreSQL.**
+   - Якщо у вас ще не встановлено PostgreSQL, ви можете завантажити та встановити його з [офіційного сайту PostgreSQL](https://www.postgresql.org/download/).
+   - Після встановлення запустіть сервер PostgreSQL. Це можна зробити за допомогою командного рядка або терміналу. Для прикладу, на Unix-подібних системах ви можете виконати команду:
+
+     ```bash
+     sudo service postgresql start
+     ```
+
+2. **Увійдіть до PostgreSQL.**
+   - Відкрийте термінал і введіть команду для входу до інтерактивного сеансу PostgreSQL:
+
+     ```bash
+     psql -U postgres
+     ```
+
+   - Якщо ви використовуєте інше ім'я користувача, замініть `postgres` на ваше ім'я користувача.
+
+3. **Створіть нову базу даних.**
+   - Після входу в PostgreSQL ви можете створити нову базу даних, виконуючи команду SQL:
+
+     ```sql
+     CREATE DATABASE task_manager;
+     ```
+
+   - Ця команда створить базу даних з ім'ям `task_manager`.
+
+4. **Перевірте, що база даних була створена.**
+   - Для перевірки існуючих баз даних введіть команду:
+
+     ```sql
+     \l
+     ```
+
+   - Ви повинні побачити `task_manager` у списку баз даних.
+
+5. **Налаштуйте користувача і права доступу.**
+   - Переконайтеся, що користувач `admin` має права доступу до бази даних. Якщо ви ще не створили цього користувача, ви можете зробити це за допомогою наступної команди:
+
+     ```sql
+     CREATE USER admin WITH PASSWORD '123';
+     ```
+
+   - Після цього надайте користувачу права доступу до бази даних:
+
+     ```sql
+     GRANT ALL PRIVILEGES ON DATABASE task_manager TO admin;
+     ```
+
+### 4. Запуск проекту
+
+npm run start
+Сервер буде доступний за адресою http://localhost:3001.
+
+### 5. Використання API
+
+GET /tasks - Отримати всі завдання
+POST /tasks - Створити нове завдання
+DELETE /tasks/
+- Видалити завдання за ID
+PUT /tasks/
+- Оновити завдання за ID
+GET /tasks/search?query=текст - Пошук завдань за назвою або описом
