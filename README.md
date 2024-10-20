@@ -1,99 +1,82 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager Backend</title>
+</head>
+<body>
+    <h1>Task Manager Backend</h1>
+    <p>Цей проект є бекендом для менеджера завдань, створеним за допомогою NestJS та TypeORM, що працює з PostgreSQL.</p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+    <h2>Вимоги</h2>
+    <ul>
+        <li><a href="https://nodejs.org/">Node.js</a> (версія 16 або вище)</li>
+        <li><a href="https://www.postgresql.org/">PostgreSQL</a> (версія 12 або вище)</li>
+    </ul>
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+    <h2>Кроки для запуску</h2>
 
-## Description
+    <h3>1. Клонування репозиторію</h3>
+    <p>Склонуйте репозиторій на свій комп'ютер:</p>
+    <pre><code>git clone &lt;URL_вашого_репозиторію&gt;
+cd task-manager-backend
+</code></pre>
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+    <h3>2. Встановлення залежностей</h3>
+    <p>Встановіть всі необхідні залежності:</p>
+    <pre><code>npm install</code></pre>
+    <p>Або за допомогою Yarn:</p>
+    <pre><code>yarn install</code></pre>
 
-## Project setup
+    <h3>3. Налаштування бази даних</h3>
+    <ol>
+        <li>Запустіть сервер PostgreSQL.</li>
+        <li>Створіть нову базу даних:</li>
+        <pre><code>CREATE DATABASE task_manager;</code></pre>
+        <li>Переконайтеся, що користувач <code>admin</code> має права доступу до бази даних з паролем <code>123</code>. Змініть ці дані у файлі <code>app.module.ts</code>, якщо це необхідно.</li>
+    </ol>
 
-```bash
-$ npm install
-```
+    <h3>4. Запуск проекту</h3>
+    <p>Запустіть проект у режимі розробки:</p>
+    <pre><code>npm run start:dev</code></pre>
+    <p>Або за допомогою Yarn:</p>
+    <pre><code>yarn start:dev</code></pre>
+    <p>Сервер буде доступний за адресою <code>http://localhost:3001</code>.</p>
 
-## Compile and run the project
+    <h3>5. Використання API</h3>
+    <p>Ви можете використовувати API для управління завданнями:</p>
+    <ul>
+        <li><strong>GET /tasks</strong> - Отримати всі завдання</li>
+        <li><strong>POST /tasks</strong> - Створити нове завдання</li>
+        <li><strong>DELETE /tasks/:id</strong> - Видалити завдання за ID</li>
+        <li><strong>PUT /tasks/:id</strong> - Оновити завдання за ID</li>
+        <li><strong>GET /tasks/search?query=текст</strong> - Пошук завдань за назвою або описом</li>
+    </ul>
 
-```bash
-# development
-$ npm run start
+    <h4>Приклад запиту на створення завдання</h4>
+    <p>Використовуйте Postman або інший інструмент для тестування API, щоб надіслати POST-запит:</p>
+    <p><strong>URL:</strong> <code>http://localhost:3001/tasks</code><br>
+       <strong>Метод:</strong> <code>POST</code><br>
+       <strong>Тіло запиту:</strong></p>
+    <pre><code>{
+  "title": "Завдання 1",
+  "description": "Опис завдання 1",
+  "isCompleted": false
+}</code></pre>
 
-# watch mode
-$ npm run start:dev
+    <h2>Тестування</h2>
+    <p>Для запуску тестів у проекті використовуйте:</p>
+    <pre><code>npm run test</code></pre>
+    <p>Або за допомогою Yarn:</p>
+    <pre><code>yarn test</code></pre>
 
-# production mode
-$ npm run start:prod
-```
+    <h2>Форматування коду</h2>
+    <p>Для форматування коду використовуйте команду:</p>
+    <pre><code>npm run format</code></pre>
+    <p>Або за допомогою Yarn:</p>
+    <pre><code>yarn format</code></pre>
 
-## Run tests
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ npm install -g mau
-$ mau deploy
-```
-
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+   
+</body>
+</html>
